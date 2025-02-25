@@ -72,3 +72,4 @@ print("Authentication Response:", response)
 ---
 
 ### **UML Sequence Diagram**
+![Screenshot_10](https://github.com/user-attachments/assets/66b27451-aa91-4d89-a080-a7337394e70f)
