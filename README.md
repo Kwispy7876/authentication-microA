@@ -4,15 +4,16 @@ This microservice handles user authentication, including **user registration** a
 ## **Communication Contract**
 The microservice listens on `tcp://localhost:5555` and expects **JSON-formatted requests** sent over a **ZeroMQ REQ-REP (request-reply) socket**. The response is always a JSON-formatted string.
 
-### **How to Request Data**
+### **How to REQUEST Data**
 To send a request to the authentication microservice, establish a ZeroMQ request socket and send a JSON object with the following format:
 
 ```json
 {
-    "action": "register", // or "login"
+    "action": "register",
     "email": "user@example.com",
     "password": "SecurePass123!"
 }
+```
 ### **Example Call**
 
 ```python
@@ -30,9 +31,9 @@ def send_request(action, email, password):
         "password": password
     }
 
-    socket.send_json(request)  # Sending request to microservice
+    socket.send_json(request)        # Sending request to microservice
     response = socket.recv_string()  # Receiving response
-    return response  # Returning response from microservice
+    return response                  # Returning response from microservice
 
 # Example: Registering a user
 response = send_request("register", "testuser@example.com", "SecurePass123!")
@@ -41,7 +42,7 @@ print("Microservice Response:", response)
 
 ---
 
-### **How to RECEIVE Data from the Microservice*#*
+### **How to RECEIVE Data**
 The microservice responds with a **JSON-formatted string** based on the request.
 
 - **Successful Registration:**
@@ -65,7 +66,9 @@ The microservice responds with a **JSON-formatted string** based on the request.
 
 ```python
 response = send_request("login", "testuser@example.com", "SecurePass123!")
-print("Microservice Response:", response)
+print("Authentication Response:", response)
 ```
 
 ---
+
+### **UML Sequence Diagram**
